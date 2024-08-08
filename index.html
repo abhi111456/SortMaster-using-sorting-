@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sorting Algorithms  </h1>
+        <form id="sortForm">
+            <div class="form-group">
+                <label for="arrayInput">Enter numbers (comma separated):</label>
+                <input type="text" id="arrayInput" placeholder="e.g., 5, 3, 8, 1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="algorithm">Choose sorting algorithm:</label>
+                <select id="algorithm">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="quick">Quick Sort</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Sort</button>
+        </form>
+
+        <div class="result" id="result"></div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
