@@ -6,29 +6,57 @@ document.getElementById('sortForm').addEventListener('submit', function(event) {
 
     let array = arrayInput.split(',').map(Number);
     let sortedArray;
+    let algorithmName;
 
     switch (algorithm) {
         case 'bubble':
             sortedArray = bubbleSort(array.slice());
+            algorithmName = 'Bubble Sort';
             break;
         case 'selection':
             sortedArray = selectionSort(array.slice());
+            algorithmName = 'Selection Sort';
             break;
         case 'insertion':
             sortedArray = insertionSort(array.slice());
+            algorithmName = 'Insertion Sort';
             break;
         case 'merge':
             sortedArray = mergeSort(array.slice());
+            algorithmName = 'Merge Sort';
             break;
         case 'quick':
             sortedArray = quickSort(array.slice());
+            algorithmName = 'Quick Sort';
             break;
         default:
             sortedArray = array;
+            algorithmName = 'Unknown Algorithm';
     }
 
-    document.getElementById('result').textContent = `Sorted array: ${sortedArray.join(', ')}`;
+    document.getElementById('result').innerHTML = `
+        <p>Original array: ${array.join(', ')}</p>
+        <p>Sorted using <span style="color: #007bff;">${algorithmName}</span>: ${sortedArray.join(', ')}</p>
+    `;
+
+    highlightSelectedAlgorithm(algorithm);
 });
+
+function highlightSelectedAlgorithm(algorithm) {
+    const selectElement = document.getElementById('algorithm');
+    for (let i = 0; i < selectElement.options.length; i++) {
+        if (selectElement.options[i].value === algorithm) {
+            selectElement.options[i].style.backgroundColor = '#007bff';
+            selectElement.options[i].style.color = '#fff';
+        } else {
+            selectElement.options[i].style.backgroundColor = '#333';
+            selectElement.options[i].style.color = '#fff';
+        }
+    }
+}
+
+// Sorting functions (same as before)
+
 
 function bubbleSort(arr) {
     let n = arr.length;
@@ -115,3 +143,4 @@ function partition(arr, low, high) {
     [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
     return i + 1;
 }
+    
